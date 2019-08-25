@@ -68,7 +68,7 @@ func (m *macSigner) setDigestHeader(r **http.Request) error {
 }
 
 func setDigestHeader(request **http.Request) error {
-	//To Be Added : LOGIC TO SET THE DIGEST HEADER
+	//To Be Added : LOGIC TO SET THE DIGEST HEADER of the Request
 	return nil
 }
 func (m *macSigner) SignResponse(pKey crypto.PrivateKey, pubKeyId string, r http.ResponseWriter) error {
