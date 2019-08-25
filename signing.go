@@ -57,7 +57,20 @@ func (m *macSigner) SignRequest(pKey crypto.PrivateKey, pubKeyId string, r *http
 	setSignatureHeader(r.Header, string(m.targetHeader), m.prefix, pubKeyId, m.m.String(), enc, m.headers)
 	return nil
 }
+func (m *macSigner) setDigestHeader(r **http.Request) error {
+	headersToSign := m.headers
+	for _, header := range headersToSign {
+		if header == "digest" {
+			setDigestHeader(r)
+		}
+	}
+	return nil
+}
 
+func setDigestHeader(request **http.Request) error {
+	//To Be Added : LOGIC TO SET THE DIGEST HEADER
+	return nil
+}
 func (m *macSigner) SignResponse(pKey crypto.PrivateKey, pubKeyId string, r http.ResponseWriter) error {
 	s, err := m.signatureStringResponse(r)
 	if err != nil {
